@@ -7,12 +7,17 @@ type ScoreboardProps = {
 
 export const Scoreboard = ({ home, away, period, phase }: ScoreboardProps) => {
   return (
-    <div>
-      <div>
-        Home {home} - Away {away}
+    <div className="scoreboard">
+      <div className="scoreboard-row">
+        <span className="scoreboard-label">Home</span>
+        <span className="scoreboard-score">{home}</span>
+        <span className="scoreboard-divider">—</span>
+        <span className="scoreboard-score">{away}</span>
+        <span className="scoreboard-label">Away</span>
       </div>
-      <div>
-        Period {period} ({phase})
+      <div className="scoreboard-meta">
+        <span>Period {period}</span>
+        <span className="scoreboard-phase">{phase}</span>
       </div>
     </div>
   )

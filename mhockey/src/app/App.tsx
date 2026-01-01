@@ -33,9 +33,113 @@ export const App = () => {
   }, [])
 
   return (
-    <div>
-      <h1>Monster Hockey</h1>
-      <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
+    <div className="mh-shell">
+      <header className="mh-header">
+        <div className="mh-brand">
+          <div className="mh-title">Monster Hockey</div>
+          <div className="mh-subtitle">Captain&apos;s Console</div>
+        </div>
+        <div className="mh-header-score">
+          <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
+        </div>
+        <div className="mh-header-actions">
+          <button type="button">Contracts</button>
+          <button type="button" className="mh-button-ghost">
+            Settings
+          </button>
+        </div>
+      </header>
+
+      <main className="mh-main">
+        <aside className="mh-panel mh-panel-left">
+          <div className="mh-panel-title">Roster</div>
+          <div className="mh-panel-subtitle">Active 10</div>
+          <ul className="mh-list">
+            <li>
+              <span className="mh-name">Rogue Howl</span>
+              <span className="mh-tag">Wolf</span>
+              <span className="mh-muted">Winger</span>
+            </li>
+            <li>
+              <span className="mh-name">Ironclaw</span>
+              <span className="mh-tag">Bear</span>
+              <span className="mh-muted">Goalie</span>
+            </li>
+            <li>
+              <span className="mh-name">Jax Holt</span>
+              <span className="mh-tag">Human</span>
+              <span className="mh-muted">Center</span>
+            </li>
+            <li>
+              <span className="mh-name">Feral Knit</span>
+              <span className="mh-tag">Wolf</span>
+              <span className="mh-muted">Defense</span>
+            </li>
+            <li>
+              <span className="mh-name">Mara Vex</span>
+              <span className="mh-tag">Human</span>
+              <span className="mh-muted">Winger</span>
+            </li>
+          </ul>
+          <div className="mh-panel-divider" />
+          <div className="mh-panel-title">Injuries</div>
+          <ul className="mh-list mh-list-compact">
+            <li>
+              <span className="mh-name">Grim Jaw</span>
+              <span className="mh-muted">Sprain (2 matches)</span>
+            </li>
+          </ul>
+        </aside>
+
+        <section className="mh-stage">
+          <div className="mh-stage-header">
+            <div>
+              <div className="mh-stage-title">Frostbite Arena</div>
+              <div className="mh-muted">Contract: High Risk • Long Match</div>
+            </div>
+            <div className="mh-stage-hazards">
+              <span className="mh-pill">Hazards: Volatile</span>
+              <span className="mh-pill mh-pill-danger">Overtime Buffs</span>
+            </div>
+          </div>
+          <div className="mh-stage-canvas">
+            <div className="mh-stage-placeholder">Pixi Renderer</div>
+          </div>
+          <div className="mh-stage-footer">
+            <div className="mh-muted">WASD + Mouse • Q/E for hits • Captain command ready</div>
+          </div>
+        </section>
+
+        <aside className="mh-panel mh-panel-right">
+          <div className="mh-panel-title">Match Feed</div>
+          <ul className="mh-feed">
+            <li>
+              <span className="mh-feed-time">00:18</span>
+              <span>Wolf squad pins the puck on the wall.</span>
+            </li>
+            <li>
+              <span className="mh-feed-time">00:25</span>
+              <span>Heavy hit lands. Stagger chance up.</span>
+            </li>
+            <li>
+              <span className="mh-feed-time">00:33</span>
+              <span>Captain howl boosts speed.</span>
+            </li>
+          </ul>
+          <div className="mh-panel-divider" />
+          <div className="mh-panel-title">Job Board</div>
+          <ul className="mh-list mh-list-compact">
+            <li>
+              <span className="mh-name">Steel City Bruisers</span>
+              <span className="mh-muted">Risk: High</span>
+            </li>
+            <li>
+              <span className="mh-name">Red Ice Nomads</span>
+              <span className="mh-muted">Risk: Medium</span>
+            </li>
+          </ul>
+        </aside>
+      </main>
     </div>
   )
 }
