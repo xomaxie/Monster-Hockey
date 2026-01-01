@@ -8,6 +8,14 @@
   grid-template-rows: auto 1fr;
 }
 
+[data-mode='match'][data-phase='live'] .mh-header {
+  display: none;
+}
+
+[data-mode='match'][data-phase='live'] .mh-main {
+  padding-top: 8px;
+}
+
 .mh-header {
   display: grid;
   grid-template-columns: minmax(200px, 1fr) auto;
