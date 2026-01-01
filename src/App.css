@@ -10,7 +10,7 @@
 
 .mh-header {
   display: grid;
-  grid-template-columns: minmax(200px, 1.1fr) auto;
+  grid-template-columns: minmax(200px, 1.1fr) minmax(220px, 0.8fr) auto;
   gap: 24px;
   align-items: center;
   padding: 18px 28px;
@@ -43,10 +43,9 @@
   gap: 12px;
 }
 
-.mh-scoreboard-bar {
+.mh-header-score {
   display: flex;
   justify-content: center;
-  padding: 16px 28px 0;
 }
 
 .mh-button-ghost {
@@ -421,8 +420,7 @@
 
 @media (max-width: 720px) {
   .mh-header,
-  .mh-main,
-  .mh-scoreboard-bar {
+  .mh-main {
     padding: 16px;
   }
 
