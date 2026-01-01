@@ -44,9 +44,6 @@ export const App = () => {
           <div className="mh-title">Monster Hockey</div>
           <div className="mh-subtitle">Captain&apos;s Console</div>
         </div>
-        <div className="mh-header-score">
-          <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
-        </div>
         <div className="mh-header-actions">
           <button type="button">Contracts</button>
           <button type="button" className="mh-button-ghost">
@@ -138,6 +135,9 @@ export const App = () => {
             </div>
           </div>
           <div className="mh-stage-canvas">
+            <div className="mh-scoreboard-overlay">
+              <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
+            </div>
             <div className="mh-feed-overlay">
               <div className="mh-feed-title">Match Feed</div>
               <ul className="mh-feed">

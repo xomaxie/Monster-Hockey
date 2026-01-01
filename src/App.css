@@ -10,7 +10,7 @@
 
 .mh-header {
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) auto minmax(200px, 1fr);
+  grid-template-columns: minmax(200px, 1fr) auto;
   gap: 24px;
   align-items: center;
   padding: 18px 28px;
@@ -42,12 +42,6 @@
   display: flex;
   gap: 12px;
   justify-self: end;
-}
-
-.mh-header-score {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
 }
 
 .mh-button-ghost {
@@ -326,6 +320,14 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+}
+
+.mh-scoreboard-overlay {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 .mh-feed-overlay {
