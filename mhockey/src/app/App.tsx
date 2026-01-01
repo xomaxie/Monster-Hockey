@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { MatchFacade } from '../game/facade/MatchFacade'
+import { PixiRenderer } from '../game/render/PixiRenderer'
 import { Scoreboard } from '../ui/Scoreboard'
 import { getLayoutData, type LayoutMode, type LayoutPhase } from './layout'
 
@@ -135,6 +136,7 @@ export const App = () => {
             </div>
           </div>
           <div className="mh-stage-canvas">
+            <PixiRenderer className="mh-pixi-root" />
             <div className="mh-scoreboard-overlay">
               <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
             </div>
@@ -155,7 +157,6 @@ export const App = () => {
                 </li>
               </ul>
             </div>
-            <div className="mh-stage-placeholder">Pixi Renderer</div>
           </div>
           <div className="mh-stage-footer">
             <div className="mh-muted">WASD + Mouse • Q/E for hits • Captain command ready</div>

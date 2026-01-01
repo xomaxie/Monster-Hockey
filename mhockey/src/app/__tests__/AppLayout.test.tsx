@@ -13,5 +13,6 @@ describe('App match layout', () => {
     const html = renderToStaticMarkup(<App />)
     expect(html).toContain('mh-roster-bar')
     expect(html).toContain('mh-feed-overlay')
+    expect(html).toContain('mh-pixi-root')
   })
 })
