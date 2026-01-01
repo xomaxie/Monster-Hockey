@@ -2,6 +2,7 @@
 logs
 *.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
@@ -39,6 +40,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+node_modules
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -81,6 +83,7 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+dist-ssr
 
 # Gatsby files
 .cache/
@@ -137,3 +140,15 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.local
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
