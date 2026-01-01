@@ -10,7 +10,7 @@
 
 .mh-header {
   display: grid;
-  grid-template-columns: minmax(200px, 1.1fr) minmax(260px, 1fr) auto;
+  grid-template-columns: minmax(200px, 1.1fr) auto;
   gap: 24px;
   align-items: center;
   padding: 18px 28px;
@@ -36,11 +36,6 @@
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.2em;
-}
-
-.mh-header-score {
-  display: flex;
-  justify-content: center;
 }
 
 .mh-header-actions {
@@ -238,6 +233,15 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+}
+
+.mh-stage-overlay {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .mh-stage-placeholder {
