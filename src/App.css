@@ -10,7 +10,7 @@
 
 .mh-header {
   display: grid;
-  grid-template-columns: minmax(200px, 1.1fr) minmax(220px, 0.8fr) auto;
+  grid-template-columns: minmax(200px, 1fr) auto minmax(200px, 1fr);
   gap: 24px;
   align-items: center;
   padding: 18px 28px;
@@ -41,11 +41,13 @@
 .mh-header-actions {
   display: flex;
   gap: 12px;
+  justify-self: end;
 }
 
 .mh-header-score {
   display: flex;
   justify-content: center;
+  justify-self: center;
 }
 
 .mh-button-ghost {
