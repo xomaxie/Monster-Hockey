@@ -115,6 +115,15 @@
   padding: 20px 28px 28px;
 }
 
+[data-mode='match'] .mh-main {
+  grid-template-columns: 1fr;
+}
+
+[data-mode='match'] .mh-panel-left,
+[data-mode='match'] .mh-panel-right {
+  display: none;
+}
+
 .mh-panel {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -185,6 +194,7 @@
 }
 
 .mh-stage {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -193,6 +203,74 @@
   border: 1px solid var(--color-border);
   background: radial-gradient(circle at top left, rgba(71, 88, 214, 0.18), transparent 55%),
     linear-gradient(180deg, #241e1e 0%, #1f1a1a 100%);
+}
+
+.mh-roster-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: rgba(25, 21, 21, 0.9);
+}
+
+.mh-roster-player {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+}
+
+.mh-roster-icons {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.mh-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.mh-possession-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-ice);
+  box-shadow: 0 0 6px rgba(71, 88, 214, 0.8);
+}
+
+.mh-ko-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-danger);
+  box-shadow: 0 0 8px rgba(234, 58, 58, 0.6);
+}
+
+.mh-condition-ok {
+  color: var(--color-text);
+}
+
+.mh-condition-warn {
+  color: #e1b455;
+}
+
+.mh-condition-danger {
+  color: var(--color-danger);
 }
 
 .mh-stage-header {
@@ -212,6 +290,14 @@
   gap: 8px;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.mh-fullscreen {
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .mh-pill {
@@ -241,6 +327,26 @@
   overflow: hidden;
 }
 
+.mh-feed-overlay {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: min(260px, 80%);
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(20, 17, 17, 0.78);
+  border: 1px solid rgba(238, 237, 237, 0.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.mh-feed-title {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  margin-bottom: 8px;
+}
+
 .mh-stage-placeholder {
   font-size: 1.2rem;
   letter-spacing: 0.3em;
@@ -252,6 +358,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.mh-intermission {
+  display: none;
+  position: absolute;
+  inset: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(238, 237, 237, 0.18);
+  background: rgba(15, 12, 12, 0.75);
+  padding: 24px;
+}
+
+[data-phase='intermission'] .mh-intermission {
+  display: flex;
+  align-items: flex-start;
+}
+
+.mh-intermission-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 18px 20px;
+  max-width: 320px;
+  display: grid;
+  gap: 12px;
+}
+
+.mh-intermission-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .mh-feed li {
