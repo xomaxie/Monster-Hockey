@@ -112,6 +112,8 @@
 
 [data-mode='match'] .mh-main {
   grid-template-columns: 1fr;
+  padding-top: 12px;
+  padding-bottom: 16px;
 }
 
 [data-mode='match'] .mh-panel-left,
@@ -200,6 +202,10 @@
     linear-gradient(180deg, #241e1e 0%, #1f1a1a 100%);
 }
 
+[data-mode='match'] .mh-stage {
+  gap: 12px;
+}
+
 .mh-roster-bar {
   display: flex;
   flex-wrap: wrap;
@@ -209,6 +215,11 @@
   border-radius: 12px;
   border: 1px solid var(--color-border);
   background: rgba(25, 21, 21, 0.9);
+}
+
+[data-mode='match'] .mh-roster-bar {
+  padding: 8px 12px;
+  gap: 8px;
 }
 
 .mh-roster-player {
@@ -320,6 +331,11 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+}
+
+[data-mode='match'] .mh-stage-canvas {
+  height: clamp(300px, 45vh, 520px);
+  aspect-ratio: auto;
 }
 
 .mh-scoreboard-overlay {
