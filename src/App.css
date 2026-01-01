@@ -8,6 +8,12 @@
   grid-template-rows: auto 1fr;
 }
 
+[data-mode='match'] .mh-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 [data-mode='match'][data-phase='live'] .mh-header {
   display: none;
 }
@@ -125,6 +131,7 @@
   padding-top: 12px;
   padding-bottom: 16px;
   min-height: 0;
+  flex: 1;
 }
 
 [data-mode='match'] .mh-panel-left,
