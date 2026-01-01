@@ -3,6 +3,6 @@ import { defineConfig } from 'vitest/config'
 export default defineConfig({
   test: {
     environment: 'node',
-    include: ['mhockey/src/**/*.test.ts'],
+    include: ['mhockey/src/**/*.test.ts', 'mhockey/src/**/*.test.tsx'],
   },
 })

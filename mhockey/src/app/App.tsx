@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { MatchFacade } from '../game/facade/MatchFacade'
 import { Scoreboard } from '../ui/Scoreboard'
+import { getLayoutData, type LayoutMode, type LayoutPhase } from './layout'
 
 export const App = () => {
   const facadeRef = useRef<MatchFacade | null>(null)
@@ -32,8 +33,12 @@ export const App = () => {
     return () => cancelAnimationFrame(raf)
   }, [])
 
+  const mode: LayoutMode = 'match'
+  const phase: LayoutPhase = 'live'
+  const layoutData = getLayoutData(mode, phase)
+
   return (
-    <div className="mh-shell">
+    <div className="mh-shell" {...layoutData}>
       <header className="mh-header">
         <div className="mh-brand">
           <div className="mh-title">Monster Hockey</div>
@@ -93,6 +98,33 @@ export const App = () => {
         </aside>
 
         <section className="mh-stage">
+          <div className="mh-roster-bar">
+            <div className="mh-roster-player mh-condition-ok">
+              <span className="mh-roster-name">Rogue Howl</span>
+              <span className="mh-roster-icons">
+                <span className="mh-badge">C</span>
+                <span className="mh-possession-dot" />
+              </span>
+            </div>
+            <div className="mh-roster-player mh-condition-warn">
+              <span className="mh-roster-name">Jax Holt</span>
+              <span className="mh-roster-icons">
+                <span className="mh-ko-indicator" />
+              </span>
+            </div>
+            <div className="mh-roster-player mh-condition-ok">
+              <span className="mh-roster-name">Feral Knit</span>
+            </div>
+            <div className="mh-roster-player mh-condition-danger">
+              <span className="mh-roster-name">Ironclaw</span>
+            </div>
+            <div className="mh-roster-player mh-condition-ok">
+              <span className="mh-roster-name">Mara Vex</span>
+            </div>
+            <div className="mh-roster-player mh-condition-ok">
+              <span className="mh-roster-name">Vox Hale</span>
+            </div>
+          </div>
           <div className="mh-stage-header">
             <div>
               <div className="mh-stage-title">Frostbite Arena</div>
@@ -101,13 +133,45 @@ export const App = () => {
             <div className="mh-stage-hazards">
               <span className="mh-pill">Hazards: Volatile</span>
               <span className="mh-pill mh-pill-danger">Overtime Buffs</span>
+              <button type="button" className="mh-fullscreen">
+                Full Screen
+              </button>
             </div>
           </div>
           <div className="mh-stage-canvas">
+            <div className="mh-feed-overlay">
+              <div className="mh-feed-title">Match Feed</div>
+              <ul className="mh-feed">
+                <li>
+                  <span className="mh-feed-time">00:18</span>
+                  <span>Wolf squad pins the puck on the wall.</span>
+                </li>
+                <li>
+                  <span className="mh-feed-time">00:25</span>
+                  <span>Heavy hit lands. Stagger chance up.</span>
+                </li>
+                <li>
+                  <span className="mh-feed-time">00:33</span>
+                  <span>Captain howl boosts speed.</span>
+                </li>
+              </ul>
+            </div>
             <div className="mh-stage-placeholder">Pixi Renderer</div>
           </div>
           <div className="mh-stage-footer">
             <div className="mh-muted">WASD + Mouse • Q/E for hits • Captain command ready</div>
+          </div>
+          <div className="mh-intermission">
+            <div className="mh-intermission-card">
+              <div className="mh-panel-title">Intermission</div>
+              <div className="mh-muted">Swap players, adjust gear, review injuries.</div>
+              <div className="mh-intermission-actions">
+                <button type="button">Sub In Player</button>
+                <button type="button" className="mh-button-ghost">
+                  Gear Loadout
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 
