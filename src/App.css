@@ -111,9 +111,12 @@
 }
 
 [data-mode='match'] .mh-main {
+  display: flex;
+  flex-direction: column;
   grid-template-columns: 1fr;
   padding-top: 12px;
   padding-bottom: 16px;
+  min-height: 0;
 }
 
 [data-mode='match'] .mh-panel-left,
@@ -204,6 +207,8 @@
 
 [data-mode='match'] .mh-stage {
   gap: 12px;
+  flex: 1;
+  min-height: 0;
 }
 
 .mh-roster-bar {
@@ -334,8 +339,19 @@
 }
 
 [data-mode='match'] .mh-stage-canvas {
-  height: clamp(300px, 45vh, 520px);
+  flex: 1;
+  height: auto;
+  min-height: 300px;
   aspect-ratio: auto;
+}
+
+[data-mode='match'] .mh-stage-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .mh-scoreboard-overlay {
