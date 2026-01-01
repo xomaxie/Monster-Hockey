@@ -47,6 +47,10 @@ export const App = () => {
         </div>
       </header>
 
+      <div className="mh-scoreboard-bar">
+        <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
+      </div>
+
       <main className="mh-main">
         <aside className="mh-panel mh-panel-left">
           <div className="mh-panel-title">Roster</div>
@@ -100,9 +104,6 @@ export const App = () => {
             </div>
           </div>
           <div className="mh-stage-canvas">
-            <div className="mh-stage-overlay">
-              <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
-            </div>
             <div className="mh-stage-placeholder">Pixi Renderer</div>
           </div>
           <div className="mh-stage-footer">

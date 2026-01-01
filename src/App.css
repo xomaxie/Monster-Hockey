@@ -43,6 +43,12 @@
   gap: 12px;
 }
 
+.mh-scoreboard-bar {
+  display: flex;
+  justify-content: center;
+  padding: 16px 28px 0;
+}
+
 .mh-button-ghost {
   background-color: transparent;
   color: var(--color-text);
@@ -235,15 +241,6 @@
   overflow: hidden;
 }
 
-.mh-stage-overlay {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  pointer-events: none;
-}
-
 .mh-stage-placeholder {
   font-size: 1.2rem;
   letter-spacing: 0.3em;
@@ -287,7 +284,8 @@
 
 @media (max-width: 720px) {
   .mh-header,
-  .mh-main {
+  .mh-main,
+  .mh-scoreboard-bar {
     padding: 16px;
   }
 
