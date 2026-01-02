@@ -140,6 +140,7 @@ export const PixiRenderer = ({ className, snapshot, hudMessage }: PixiRendererPr
 
         const snapshot = snapshotRef.current
         const message = messageRef.current
+        const layout = getRinkLayout({ width, height })
         scoreText.text = `HOME ${snapshot.home} - ${snapshot.away} AWAY`
         metaText.text = formatHudMeta(snapshot)
         noteText.text = message
@@ -149,28 +150,28 @@ export const PixiRenderer = ({ className, snapshot, hudMessage }: PixiRendererPr
         const gap = 4
         const boxWidth = Math.max(scoreText.width, metaText.width) + paddingX * 2
         const boxHeight = paddingY * 2 + scoreText.height + gap + metaText.height
-        const boxX = width / 2 - boxWidth / 2
-        const boxY = 12
+        const boxX = layout.bounds.x + (layout.bounds.width - boxWidth) / 2
+        const boxY = layout.bounds.y + 8
 
         hudBox.clear()
-        hudBox.roundRect(boxX, boxY, boxWidth, boxHeight, 12).fill({ color: 0x191515, alpha: 0.75 })
-        hudBox.roundRect(boxX, boxY, boxWidth, boxHeight, 12).stroke({ width: 1, color: 0x3a3232, alpha: 0.9 })
+        hudBox.roundRect(boxX, boxY, boxWidth, boxHeight, 12).fill({ color: 0x191515, alpha: 0.55 })
+        hudBox.roundRect(boxX, boxY, boxWidth, boxHeight, 12).stroke({ width: 1, color: 0x3a3232, alpha: 0.7 })
 
         scoreText.position.set(width / 2 - scoreText.width / 2, boxY + paddingY)
         metaText.position.set(width / 2 - metaText.width / 2, boxY + paddingY + scoreText.height + gap)
 
         if (message) {
           const notePaddingX = 12
-          const notePaddingY = 6
+          const notePaddingY = 4
           const noteWidth = noteText.width + notePaddingX * 2
           const noteHeight = noteText.height + notePaddingY * 2
           const noteX = width / 2 - noteWidth / 2
-          const noteY = boxY + boxHeight + 8
+          const noteY = Math.min(layout.bounds.y + layout.bounds.height + 2, height - noteHeight - 2)
           noteBox.visible = true
           noteText.visible = true
           noteBox.clear()
-          noteBox.roundRect(noteX, noteY, noteWidth, noteHeight, 999).fill({ color: 0x191515, alpha: 0.7 })
-          noteBox.roundRect(noteX, noteY, noteWidth, noteHeight, 999).stroke({ width: 1, color: 0x3a3232, alpha: 0.8 })
+          noteBox.roundRect(noteX, noteY, noteWidth, noteHeight, 999).fill({ color: 0x191515, alpha: 0.55 })
+          noteBox.roundRect(noteX, noteY, noteWidth, noteHeight, 999).stroke({ width: 1, color: 0x3a3232, alpha: 0.7 })
           noteText.position.set(width / 2 - noteText.width / 2, noteY + notePaddingY)
         } else {
           noteBox.visible = false
