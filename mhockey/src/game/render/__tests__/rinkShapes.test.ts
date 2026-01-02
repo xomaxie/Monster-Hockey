@@ -11,5 +11,6 @@ describe('getRinkShapes', () => {
     expect(shapes.faceoffCircles).toHaveLength(4)
     expect(shapes.debugPlayers).toHaveLength(6)
     expect(shapes.debugPuck).toEqual({ x: layout.centerLineX, y: 300 })
+    expect(shapes.debugMarkers).toHaveLength(2)
   })
 })

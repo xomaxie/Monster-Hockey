@@ -3,12 +3,14 @@ import type { RinkLayout } from './rinkLayout'
 export type Line = { x1: number; y1: number; x2: number; y2: number; kind: 'center' | 'blue' | 'goal' }
 export type Circle = { x: number; y: number; radius: number; kind: 'faceoff' }
 export type DebugDot = { x: number; y: number; radius: number; kind: 'puck' | 'home' | 'away' }
+export type DebugMarker = { x: number; y: number; radius: number; kind: 'captain' | 'possession' }
 
 export type RinkShapes = {
   lines: Line[]
   faceoffCircles: Circle[]
   debugPlayers: DebugDot[]
   debugPuck: { x: number; y: number }
+  debugMarkers: DebugMarker[]
 }
 
 export const getRinkShapes = (layout: RinkLayout): RinkShapes => {
@@ -34,10 +36,26 @@ export const getRinkShapes = (layout: RinkLayout): RinkShapes => {
     { x: centerLineX + bounds.width * 0.32, y: midY, radius: 10, kind: 'away' },
   ]
 
+  const debugMarkers: DebugMarker[] = [
+    {
+      x: debugPlayers[0].x,
+      y: debugPlayers[0].y,
+      radius: debugPlayers[0].radius + 6,
+      kind: 'captain',
+    },
+    {
+      x: debugPlayers[2].x,
+      y: debugPlayers[2].y,
+      radius: debugPlayers[2].radius + 4,
+      kind: 'possession',
+    },
+  ]
+
   return {
     lines,
     faceoffCircles: faceoffCircles.map((circle) => ({ ...circle, kind: 'faceoff' })),
     debugPlayers,
     debugPuck,
+    debugMarkers,
   }
 }

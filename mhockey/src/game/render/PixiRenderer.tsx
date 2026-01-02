@@ -39,6 +39,11 @@ const drawDebug = (graphics: Graphics, width: number, height: number) => {
   })
 
   graphics.circle(shapes.debugPuck.x, shapes.debugPuck.y, 6).fill({ color: 0xeeeded, alpha: 0.9 })
+
+  shapes.debugMarkers.forEach((marker) => {
+    const color = marker.kind === 'captain' ? 0xe1811f : 0xeeeded
+    graphics.circle(marker.x, marker.y, marker.radius).stroke({ width: 2, color, alpha: 0.85 })
+  })
 }
 
 export const PixiRenderer = ({ className }: PixiRendererProps) => {

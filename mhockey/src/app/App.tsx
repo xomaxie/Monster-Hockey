@@ -6,7 +6,12 @@ import { getLayoutData, type LayoutMode, type LayoutPhase } from './layout'
 
 export const App = () => {
   const facadeRef = useRef<MatchFacade | null>(null)
-  const [snapshot, setSnapshot] = useState({
+  const [snapshot, setSnapshot] = useState<{
+    home: number
+    away: number
+    period: number
+    phase: 'regulation' | 'overtime' | 'final'
+  }>({
     home: 0,
     away: 0,
     period: 1,
@@ -125,7 +130,7 @@ export const App = () => {
           <div className="mh-stage-header">
             <div>
               <div className="mh-stage-title">Frostbite Arena</div>
-              <div className="mh-muted">Contract: High Risk • Long Match</div>
+              <div className="mh-muted">Contract: High Risk - Long Match</div>
             </div>
             <div className="mh-stage-hazards">
               <span className="mh-pill">Hazards: Volatile</span>
@@ -135,12 +140,11 @@ export const App = () => {
               </button>
             </div>
           </div>
-          <div className="mh-stage-canvas">
-            <PixiRenderer className="mh-pixi-root" />
-            <div className="mh-scoreboard-overlay">
+          <div className="mh-stage-hud">
+            <div className="mh-stage-scoreboard">
               <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
             </div>
-            <div className="mh-feed-overlay">
+            <div className="mh-stage-feed">
               <div className="mh-feed-title">Match Feed</div>
               <ul className="mh-feed">
                 <li>
@@ -158,8 +162,11 @@ export const App = () => {
               </ul>
             </div>
           </div>
+          <div className="mh-stage-canvas">
+            <PixiRenderer className="mh-pixi-root" />
+          </div>
           <div className="mh-stage-footer">
-            <div className="mh-muted">WASD + Mouse • Q/E for hits • Captain command ready</div>
+            <div className="mh-muted">WASD + Mouse - Q/E for hits - Captain command ready</div>
           </div>
           <div className="mh-intermission">
             <div className="mh-intermission-card">
