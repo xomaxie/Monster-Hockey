@@ -134,9 +134,6 @@ export const App = () => {
             <div className="mh-stage-hazards">
               <span className="mh-pill">Hazards: Volatile</span>
               <span className="mh-pill mh-pill-danger">Overtime Buffs</span>
-              <button type="button" className="mh-fullscreen">
-                Full Screen
-              </button>
             </div>
           </div>
           <div className="mh-stage-canvas">

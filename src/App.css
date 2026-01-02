@@ -304,6 +304,11 @@
   justify-content: space-between;
   gap: 16px;
   align-items: center;
+  overflow: hidden;
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 280ms ease, opacity 220ms ease, transform 220ms ease;
 }
 
 .mh-stage-title {
@@ -316,6 +321,13 @@
   gap: 8px;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+[data-mode='match'][data-phase='live'] .mh-stage-header {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  margin: 0;
 }
 
 .mh-fullscreen {
