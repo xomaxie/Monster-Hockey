@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Application, Graphics } from 'pixi.js'
+import type { Application, Graphics } from 'pixi.js'
 import { getRinkLayout } from './rinkLayout'
 import { getRinkShapes } from './rinkShapes'
 
@@ -48,12 +48,19 @@ export const PixiRenderer = ({ className }: PixiRendererProps) => {
     const host = hostRef.current
     if (!host) return
 
-    const app = new Application()
+    let app: Application | null = null
     let resizeObserver: ResizeObserver | null = null
-    const rinkLayer = new Graphics()
-    const debugLayer = new Graphics()
+    let resizeHandler: (() => void) | null = null
+    let useWindowResize = false
 
     const boot = async () => {
+      const { Application: PixiApplication, Graphics: PixiGraphics } = await import('pixi.js')
+      if (!hostRef.current) return
+
+      app = new PixiApplication()
+      const rinkLayer = new PixiGraphics()
+      const debugLayer = new PixiGraphics()
+
       await app.init({
         backgroundAlpha: 0,
         antialias: true,
@@ -69,22 +76,35 @@ export const PixiRenderer = ({ className }: PixiRendererProps) => {
         const width = hostRef.current?.clientWidth ?? 0
         const height = hostRef.current?.clientHeight ?? 0
         if (width <= 0 || height <= 0) return
-        app.renderer.resize(width, height)
+        app?.renderer.resize(width, height)
         drawRink(rinkLayer, width, height)
         drawDebug(debugLayer, width, height)
       }
+      resizeHandler = resize
 
       resize()
-      resizeObserver = new ResizeObserver(resize)
-      resizeObserver.observe(hostRef.current)
+      if (typeof ResizeObserver === 'undefined') {
+        useWindowResize = true
+        window.addEventListener('resize', resize)
+      } else {
+        resizeObserver = new ResizeObserver(resize)
+        resizeObserver.observe(hostRef.current)
+      }
     }
 
-    void boot()
+    void boot().catch((error) => {
+      console.error('Pixi renderer failed to initialize.', error)
+    })
 
     return () => {
       resizeObserver?.disconnect()
-      app.destroy(true, { children: true })
-      if (hostRef.current && app.canvas.parentNode === hostRef.current) {
+      if (useWindowResize) {
+        if (resizeHandler) {
+          window.removeEventListener('resize', resizeHandler)
+        }
+      }
+      app?.destroy(true, { children: true })
+      if (hostRef.current && app?.canvas.parentNode === hostRef.current) {
         hostRef.current.removeChild(app.canvas)
       }
     }
