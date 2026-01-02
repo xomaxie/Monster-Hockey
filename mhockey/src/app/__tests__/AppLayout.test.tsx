@@ -12,7 +12,7 @@ describe('App match layout', () => {
   it('includes match roster bar and feed overlay placeholders', () => {
     const html = renderToStaticMarkup(<App />)
     expect(html).toContain('mh-roster-bar')
-    expect(html).toContain('mh-stage-feed')
+    expect(html).toContain('mh-scoreboard-note')
     expect(html).toContain('mh-stage-scoreboard')
     expect(html).toContain('mh-pixi-root')
   })

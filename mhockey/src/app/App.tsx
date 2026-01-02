@@ -143,23 +143,7 @@ export const App = () => {
           <div className="mh-stage-hud">
             <div className="mh-stage-scoreboard">
               <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
-            </div>
-            <div className="mh-stage-feed">
-              <div className="mh-feed-title">Match Feed</div>
-              <ul className="mh-feed">
-                <li>
-                  <span className="mh-feed-time">00:18</span>
-                  <span>Wolf squad pins the puck on the wall.</span>
-                </li>
-                <li>
-                  <span className="mh-feed-time">00:25</span>
-                  <span>Heavy hit lands. Stagger chance up.</span>
-                </li>
-                <li>
-                  <span className="mh-feed-time">00:33</span>
-                  <span>Captain howl boosts speed.</span>
-                </li>
-              </ul>
+              <div className="mh-scoreboard-note">00:33 Captain howl boosts speed.</div>
             </div>
           </div>
           <div className="mh-stage-canvas">

@@ -316,17 +316,19 @@
 .mh-stage-scoreboard {
   grid-column: 2;
   justify-self: center;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
 }
 
-.mh-stage-feed {
-  grid-column: 3;
-  justify-self: end;
-  width: min(260px, 100%);
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(20, 17, 17, 0.78);
+.mh-scoreboard-note {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(20, 17, 17, 0.7);
   border: 1px solid rgba(238, 237, 237, 0.12);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
 }
 
 .mh-stage-title {
@@ -480,8 +482,7 @@
     grid-template-columns: 1fr;
   }
 
-  .mh-stage-scoreboard,
-  .mh-stage-feed {
+  .mh-stage-scoreboard {
     grid-column: 1;
     justify-self: start;
     width: 100%;
