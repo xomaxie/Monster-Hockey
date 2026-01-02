@@ -9,11 +9,9 @@ describe('App match layout', () => {
     expect(html).toContain('data-phase="live"')
   })
 
-  it('includes match roster bar and feed overlay placeholders', () => {
+  it('includes match roster bar and renderer host', () => {
     const html = renderToStaticMarkup(<App />)
     expect(html).toContain('mh-roster-bar')
-    expect(html).toContain('mh-scoreboard-note')
-    expect(html).toContain('mh-stage-scoreboard')
     expect(html).toContain('mh-pixi-root')
   })
 })

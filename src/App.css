@@ -306,31 +306,6 @@
   align-items: center;
 }
 
-.mh-stage-hud {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 12px;
-  align-items: start;
-}
-
-.mh-stage-scoreboard {
-  grid-column: 2;
-  justify-self: center;
-  display: grid;
-  gap: 6px;
-  justify-items: center;
-}
-
-.mh-scoreboard-note {
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(20, 17, 17, 0.7);
-  border: 1px solid rgba(238, 237, 237, 0.12);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--color-muted);
-}
-
 .mh-stage-title {
   font-size: 1.6rem;
   color: var(--color-text);
@@ -476,16 +451,6 @@
 
   .mh-main {
     grid-template-columns: 1fr;
-  }
-
-  .mh-stage-hud {
-    grid-template-columns: 1fr;
-  }
-
-  .mh-stage-scoreboard {
-    grid-column: 1;
-    justify-self: start;
-    width: 100%;
   }
 }
 

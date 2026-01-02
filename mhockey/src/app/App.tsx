@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { MatchFacade } from '../game/facade/MatchFacade'
 import { PixiRenderer } from '../game/render/PixiRenderer'
-import { Scoreboard } from '../ui/Scoreboard'
 import { getLayoutData, type LayoutMode, type LayoutPhase } from './layout'
 
 export const App = () => {
@@ -140,14 +139,8 @@ export const App = () => {
               </button>
             </div>
           </div>
-          <div className="mh-stage-hud">
-            <div className="mh-stage-scoreboard">
-              <Scoreboard home={snapshot.home} away={snapshot.away} period={snapshot.period} phase={snapshot.phase} />
-              <div className="mh-scoreboard-note">00:33 Captain howl boosts speed.</div>
-            </div>
-          </div>
           <div className="mh-stage-canvas">
-            <PixiRenderer className="mh-pixi-root" />
+            <PixiRenderer className="mh-pixi-root" snapshot={snapshot} hudMessage="00:33 Captain howl boosts speed." />
           </div>
           <div className="mh-stage-footer">
             <div className="mh-muted">WASD + Mouse - Q/E for hits - Captain command ready</div>
